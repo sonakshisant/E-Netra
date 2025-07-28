@@ -1,4 +1,4 @@
-# AI-Powered Dynamic Content Interpreter - Project Report
+# E-Netra - Project Report
 
 ## Project Overview
 This project has successfully created an AI-powered web application that dynamically interprets and generates content based on user inputs. The system leverages natural language processing techniques to understand user requests and generate appropriate content in real-time.
