@@ -47,10 +47,6 @@ The frontend is built with HTML, CSS, and JavaScript, providing:
 6. **View Results**: See the AI-generated interpretation in the output section
 7. **History**: Access previous interpretations from the history section
 
-## Access Information
-The application is currently running and accessible at:
-https://5000-imgxg16o9g9ro5stao9gt-5d2084de.manusvm.computer
-
 ## Future Enhancements
 Potential future enhancements could include:
 - User authentication for personalized history
