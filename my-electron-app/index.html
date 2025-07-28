@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Enhanced Browser</title>
+  <style>
+    /* Basic styling for the settings tab */
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #settings-form { max-width: 400px; }
+    label { display: block; margin: 10px 0 5px; }
+    select, input { width: 100%; padding: 8px; }
+    button { margin-top: 10px; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <h1>Settings</h1>
+  <!-- Settings Form -->
+  <form id="settings-form">
+    <label for="language">Preferred Language:</label>
+    <select id="language" name="language">
+      <option value="auto">Auto-Detect</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="ta">Tamil</option>
+      <option value="bn">Bengali</option>
+      <!-- Add more Indic languages as needed, e.g., <option value="te">Telugu</option> -->
+    </select>
+
+    <label for="summarizationModel">Summarization Model:</label>
+    <select id="summarizationModel" name="summarizationModel">
+      <option value="openai">OpenAI (Cloud)</option>
+      <option value="huggingface">Hugging Face (Local)</option>
+    </select>
+
+    <!-- Add more fields as needed, e.g., TTS voice selection -->
+    <label for="ttsVoice">TTS Voice:</label>
+    <input type="text" id="ttsVoice" name="ttsVoice" placeholder="e.g., hi-IN-Neural2-A">
+
+    <button type="submit">Save Settings</button>
+  </form>
+
+  <!-- Load your renderer JS -->
+  <script src="renderer.js"></script>  <!-- This file will handle form logic -->
+</body>
+</html>

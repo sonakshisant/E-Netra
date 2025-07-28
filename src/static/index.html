@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Dynamic Content Interpreter</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">AI<span>Interpreter</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#history">History</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero">
+                <h1>AI-Powered Dynamic Content Interpreter</h1>
+                <p>Transform, analyze, and generate content with the power of artificial intelligence. Simply input your content, select an operation, and let our AI do the rest.</p>
+            </section>
+
+            <div class="interpreter-container">
+                <section class="input-section">
+                    <h2>Input</h2>
+                    <div class="form-group">
+                        <label for="content-type">Content Type:</label>
+                        <select id="content-type">
+                            <option value="text">Text</option>
+                            <option value="code">Code</option>
+                            <option value="creative">Creative</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="operation">Operation:</label>
+                        <select id="operation">
+                            <option value="summarize">Summarize</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-text">Your Content:</label>
+                        <textarea id="input-text" placeholder="Enter your content here..."></textarea>
+                    </div>
+                    <div id="options-container" class="options-container">
+                        <!-- Dynamic options will be inserted here -->
+                    </div>
+                    <div id="alert-container"></div>
+                    <div class="form-group">
+                        <button id="interpret-button" class="btn btn-primary btn-block">Interpret Content</button>
+                        <button id="clear-button" class="btn btn-secondary btn-block" style="margin-top: 0.5rem;">Clear</button>
+                    </div>
+                </section>
+
+                <section class="output-section">
+                    <h2>Output</h2>
+                    <div id="loading" class="loading">
+                        <div class="loading-spinner"></div>
+                        <p>Processing your content...</p>
+                    </div>
+                    <div id="output-content" class="output-content output-placeholder">
+                        Interpreted content will appear here...
+                    </div>
+                </section>
+            </div>
+
+            <section id="history" class="history-section">
+                <h2>History</h2>
+                <div id="history-items" class="history-items">
+                    <!-- History items will be dynamically added here -->
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <h2>About AI Content Interpreter</h2>
+                <p>The AI-Powered Dynamic Content Interpreter is a sophisticated tool designed to help users transform, analyze, and generate content using artificial intelligence. Whether you need to summarize text, explain code, or create creative content, our AI interpreter has you covered.</p>
+                
+                <h3>Features</h3>
+                <p>Our application offers a range of powerful features:</p>
+                <ul>
+                    <li><strong>Text Processing:</strong> Summarize, expand, or transform text content with various style options.</li>
+                    <li><strong>Code Interpretation:</strong> Get explanations, optimizations, or debugging suggestions for your code snippets.</li>
+                    <li><strong>Creative Generation:</strong> Create stories, poems, or generate creative ideas based on your prompts.</li>
+                    <li><strong>Content Analysis:</strong> Automatically analyze your content to suggest the most appropriate processing options.</li>
+                    <li><strong>History Tracking:</strong> Keep track of your previous interpretations for easy reference and reuse.</li>
+                </ul>
+                
+                <h3>How It Works</h3>
+                <p>The AI Content Interpreter uses advanced natural language processing techniques to understand and process your content. Simply select the type of content you're working with, choose the desired operation, and provide your input. Our AI will analyze your content and generate results based on your specifications.</p>
+                
+                <p>For optimal results, provide clear and specific input, and experiment with different operations and options to find the best fit for your needs.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">AI<span>Interpreter</span></div>
+                    <p>Transforming content with AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#history">History</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 AI Content Interpreter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

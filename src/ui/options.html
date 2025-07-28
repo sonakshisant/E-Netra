@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dynamic Content Interpreter Options</title>
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-color: #dee2e6;
+            --border-radius: 4px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        .tab:hover {
+            background-color: rgba(74, 108, 247, 0.05);
+        }
+
+        .tab.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+
+        .checkbox-group {
+            margin-bottom: 10px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #d7dcdf;
+            outline: none;
+            margin-top: 10px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .slider-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+
+        .content-type-settings {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .content-type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .content-type-title {
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .button-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background-color: #3a5bd9;
+        }
+
+        .button-secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            margin-right: 10px;
+        }
+
+        .button-secondary:hover {
+            background-color: #e2e6ea;
+        }
+
+        .info-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid var(--info-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .info-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--info-color);
+        }
+
+        .site-specific-settings {
+            margin-top: 20px;
+        }
+
+        .site-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+
+        .site-domain {
+            font-weight: 500;
+        }
+
+        .site-actions {
+            display: flex;
+        }
+
+        .site-action {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--secondary-color);
+            margin-left: 10px;
+            transition: var(--transition);
+        }
+
+        .site-action:hover {
+            color: var(--primary-color);
+        }
+
+        .add-site-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .add-site-form input {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        /* Accessibility improvements */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                border-bottom: 1px solid var(--border-color);
+                border-left: 2px solid transparent;
+            }
+            
+            .tab.active {
+                border-bottom: 1px solid var(--border-color);
+                border-left: 2px solid var(--primary-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Dynamic Content Interpreter</h1>
+            <p class="subtitle">Customize how dynamic content is detected and presented to screen readers</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="general">General Settings</div>
+            <div class="tab" data-tab="filtering">Content Filtering</div>
+            <div class="tab" data-tab="notifications">Notifications</div>
+            <div class="tab" data-tab="sites">Site-Specific Settings</div>
+            <div class="tab" data-tab="advanced">Advanced</div>
+        </div>
+
+        <div id="general" class="tab-content active">
+            <div class="info-box">
+                <div class="info-title">About This Extension</div>
+                <p>This extension helps visually impaired users by detecting and interpreting dynamic content changes on websites, making them accessible through screen readers.</p>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="extension-enabled" checked>
+                    <label for="extension-enabled">Enable extension</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="default-alert-method">Default notification method:</label>
+                <select id="default-alert-method">
+                    <option value="screenreader">Screen reader announcements</option>
+                    <option value="audio">Audio cues</option>
+                    <option value="visual">Visual notifications</option>
+                    <option value="combined">Combined (all methods)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="priority-threshold">Minimum priority threshold for notifications:</label>
+                <input type="range" min="1" max="10" value="5" class="slider" id="priority-threshold">
+                <span class="slider-value" id="priority-threshold-value">5</span>
+                <p><small>Higher values mean fewer notifications, but more important ones.</small></p>
+            </div>
+        </div>
+
+        <div id="filtering" class="tab-content">
+            <div class="info-box">
+                <div class="info-title">Content Filtering</div>
+                <p>Customize which types of dynamic content changes you want to be notified about.</p>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Text Content</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="text-enabled" checked>
+                        <label for="text-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="text-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="5" class="slider" id="text-priority">
+                    <span class="slider-value" id="text-priority-value">5</span>
+                </div>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Form Updates</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="form-enabled" checked>
+                        <label for="form-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="form-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="6" class="slider" id="form-priority">
+                    <span class="slider-value" id="form-priority-value">6</span>
+                </div>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Error Messages</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="error-enabled" checked>
+                        <label for="error-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="error-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="3" class="slider" id="error-priority">
+                    <span class="slider-value" id="error-priority-value">3</span>
+                </div>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Navigation Changes</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="navigation-enabled" checked>
+                        <label for="navigation-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="navigation-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="7" class="slider" id="navigation-priority">
+                    <span class="slider-value" id="navigation-priority-value">7</span>
+                </div>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Chat Messages</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="chat-enabled" checked>
+                        <label for="chat-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="chat-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="4" class="slider" id="chat-priority">
+                    <span class="slider-value" id="chat-priority-value">4</span>
+                </div>
+            </div>
+
+            <div class="content-type-settings">
+                <div class="content-type-header">
+                    <span class="content-type-title">Advertisements</span>
+                    <div class="checkbox-label">
+                        <input type="checkbox" id="advertisement-enabled">
+                        <label for="advertisement-enabled">Enabled</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="advertisement-priority">Minimum priority:</label>
+                    <input type="range" min="1" max="10" value="10" class="slider" id="advertisement-priority">
+                    <span class="slider-value" id="advertisement-priority-value">10</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="notifications" class="tab-content">
+            <div class="info-box">
+                <div class="info-title">Notification Settings</div>
+                <p>Customize how notifications are delivered to you.</p>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="audio-enabled" checked>
+                    <label for="audio-enabled">Enable audio cues</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="haptic-enabled">
+                    <label for="haptic-enabled">Enable haptic feedback (if available)</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="visual-duration">Visual notification duration (ms):</label>
+                <input type="number" id="visual-duration" value="5000" min="1000" step="1000">
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="queue-alerts" checked>
+                    <label for="queue-alerts">Queue notifications (prevents overwhelming)</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="max-queue">Maximum queue size:</label>
+                <input type="number" id="max-queue" value="10" min="1" max="20">
+            </div>
+
+            <h3>Notification Methods by Content Type</h3>
+            <p><small>Choose how each type of content should be announced.</small></p>
+
+            <div class="form-group">
+                <label for="text-alert-method">Text Content:</label>
+                <select id="text-alert-method">
+                    <option value="screenreader">Screen reader</option>
+                    <option value="audio">Audio</option>
+                    <option value="visual">Visual</option>
+                    <option value="combined">Combined</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="form-alert-method">Form Updates:</label>
+                <select id="form-alert-method">
+                    <option value="screenreader">Screen reader</option>
+                    <option value="audio">Audio</option>
+                    <option value="visual">Visual</option>
+                    <option value="combined">Combined</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="error-alert-method">Error Messages:</label>
+                <select id="error-alert-method">
+                    <option value="combined" selected>Combined</option>
+                    <option value="screenreader">Screen reader</option>
+                    <option value="audio">Audio</option>
+                    <option value="visual">Visual</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="chat-alert-method">Chat Messages:</label>
+                <select id="chat-alert-method">
+                    <option value="combined" selected>Combined</option>
+                    <option value="screenreader">Screen reader</option>
+                    <option value="audio">Audio</option>
+                    <option value="visual">Visual</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="sites" class="tab-content">
+            <div class="info-box">
+                <div class="info-title">Site-Specific Settings</div>
+                <p>Customize settings for specific websites. These will override your global settings when visiting these sites.</p>
+            </div>
+
+            <div class="site-specific-settings">
+                <h3>Saved Sites</h3>
+                <div id="site-list">
+                    <!-- Site items will be added here dynamically -->
+                    <div class="site-item">
+                        <span class="site-domain">example.com</span>
+                        <div class="site-actions">
+                            <button class="site-action" aria-label="Edit settings for example.com">Edit</button>
+                            <button class="site-action" aria-label="Remove example.com">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Add New Site</h3>
+                <div class="add-site-form">
+                    <input type="text" id="new-site-domain" placeholder="Enter domain (e.g., example.com)">
+                    <button class="button button-primary" id="add-site-button">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="advanced" class="tab-content">
+            <div class="info-box">
+                <div class="info-title">Advanced Settings</div>
+                <p>These settings are for advanced users and developers.</p>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="enable-learning" checked>
+                    <label for="enable-learning">Enable learning from interactions</label>
+                </div>
+                <p><small>The extension will learn from your interactions and adjust settings automatically.</small></p>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-label">
+                    <input type="checkbox" id="developer-mode">
+                    <label for="developer-mode">Developer Mode</label>
+                </div>
+                <p><small>Shows additional information for developers and highlights accessibility issues.</small></p>
+            </div>
+
+            <div class="form-group">
+                <label for="throttle-time">Throttle time for high-frequency updates (ms):</label>
+                <input type="number" id="throttle-time" value="100" min="50" max="500" step="50">
+            </div>
+
+            <div class="form-group">
+                <label for="min-text-length">Minimum text length to consider significant:</label>
+                <input type="number" id="min-text-length" value="5" min="1" max="20">
+            </div>
+
+            <div class="form-group">
+                <button class="button button-secondary" id="export-settings">Export Settings</button>
+                <button class="button button-secondary" id="import-settings">Import Settings</button>
+            </div>
+
+            <div class="form-group">
+                <button class="button button-secondary" id="reset-settings">Reset to Defaults</button>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="button button-secondary" id="cancel-button">Cancel</button>
+            <button class="button button-primary" id="save-button">Save Settings</button>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Update slider value displays
+        document.querySelectorAll('.slider').forEach(slider => {
+            const valueDisplay = document.getElementById(`${slider.id}-value`);
+            slider.addEventListener('input', () => {
+                valueDisplay.textContent = slider.value;
+            });
+        });
+
+        // Save settings
+        document.getElementById('save-button').addEventListener('click', () => {
+            // In a real extension, this would save to chrome.storage
+            alert('Settings saved successfully!');
+        });
+
+        // Cancel button
+        document.getElementById('cancel-button').addEventListener('click', () => {
+            // In a real extension, this would reload the original settings
+            if (confirm('Discard changes?')) {
+                window.close();
+            }
+        });
+
+        // Reset to defaults
+        document.getElementById('reset-settings').addEventListener('click', () => {
+            if (confirm('Reset all settings to default values?')) {
+                // In a real extension, this would reset all settings
+                alert('Settings reset to defaults.');
+            }
+        });
+
+        // Add site button
+        document.getElementById('add-site-button').addEventListener('click', () => {
+            const domain = document.getElementById('new-site-domain').value.trim();
+            if (domain) {
+                // In a real extension, this would add the site to storage
+                alert(`Site ${domain} added. You can now customize settings for this site.`);
+                document.getElementById('new-site-domain').value = '';
+            } else {
+                alert('Please enter a valid domain.');
+            }
+        });
+    </script>
+</body>
+</html>
